@@ -44,22 +44,25 @@ export default function BudgetForm({ expenses, setExpenses }) {
       };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <InputGroup className="mb-3">
+    <Form onSubmit={handleSubmit} >
+      <InputGroup className="my-3">
         <FormControl
           placeholder="Enter expense"
           onChange={handleName}
           value={name}
+          className="col"
         />
         <FormControl
           placeholder="Enter amount"
           onChange={handleAmount}
           value={amount}
+          className="col"
         />
         <FormControl
           placeholder="Enter date(YYYY-MM-DD)"
           onChange={handleDate}
           value={date}
+          className="col"
         />
         <Button variant="primary" type="submit">
           Add expense

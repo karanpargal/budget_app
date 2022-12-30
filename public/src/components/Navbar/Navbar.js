@@ -11,27 +11,27 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav>
-      <h1>Budget App</h1>
-      <ul>
+    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+      <h1 className='navbar-brand mx-2'>Budget App</h1>
+      <ul className='navbar-nav mr-auto'>
         {isAuth === true ? (
-          <Fragment>
+          <Fragment className="collapse navbar-collapse">
             {' '}
-            <li>
-              <Link to='/dashboard'>Dashboard</Link>
+            <li className="nav-item">
+              <Link to='/dashboard' className='nav-link'>Dashboard</Link>
             </li>
-            <li>
-              <Link to='/logout'>Logout</Link>
+            <li className="nav-item">
+              <Link to='/logout' className='nav-link'>Logout</Link>
             </li>
           </Fragment>
         ) : (
-          <Fragment>
+          <Fragment className="collapse navbar-collapse">
             {' '}
-            <li>
-              <Link to='/login'>Login</Link>
+            <li className="nav-item">
+              <Link to='/login' className='nav-link'>Login</Link>
             </li>
-            <li>
-              <Link to='/signup'>Signup</Link>
+            <li className="nav-item">
+              <Link to='/signup' className='nav-link'>Signup</Link>
             </li>
           </Fragment>
         )}

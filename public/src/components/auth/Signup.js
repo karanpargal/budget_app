@@ -49,14 +49,15 @@ const Signup = () => {
 
   return (
     <div>
-      {loading === false && <h1>Signup</h1>}
+      {loading === false && <h1 className="text-center">Signup</h1>}
       {errors === true && <h2>Cannot signup with provided credentials</h2>}
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="w-25 mx-auto">
         <label htmlFor='email'>Email address:</label> <br />
         <input
           name='email'
           type='email'
           value={email}
+          className="form-control "
           onChange={e => setEmail(e.target.value)}
           required
         />{' '}
@@ -65,6 +66,7 @@ const Signup = () => {
         <input
           name='password1'
           type='password'
+          className="form-control "
           value={password1}
           onChange={e => setPassword1(e.target.value)}
           required
@@ -74,12 +76,13 @@ const Signup = () => {
         <input
           name='password2'
           type='password'
+          className="form-control "
           value={password2}
           onChange={e => setPassword2(e.target.value)}
           required
         />{' '}
         <br />
-        <input type='submit' value='Signup' />
+        <input type='submit' value='Signup' className="btn btn-primary" />
       </form>
     </div>
   );
