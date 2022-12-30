@@ -1,34 +1,38 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import BudgetApp from "./components/budgetApp";
-import BudgetForm from "./components/budgetForm";
 import axios from "axios";
+import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/auth/Login";
+import Signup from "./components/auth/Signup";
+import Logout from "./components/auth/Logout";
+import Dashboard from "./components/Dashboard";
 
 function App() {
-
   const [expenses, setExpenses] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/budgetapp')
-    .then((res) => {
-      setExpenses(res.data);
-    }).catch((err) => {
-      alert('Error: ' + err);
-    })
+    axios
+      .get("/api/budgetapp")
+      .then((res) => {
+        setExpenses(res.data);
+      })
+      .catch((err) => {
+        alert("Error: " + err);
+      });
   }, []);
-  
+
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Budget App</Navbar.Brand>
-        </Container>
-      </Navbar>
-      <Container>
-        <BudgetForm expenses={expenses} setExpenses={setExpenses}/>
-        <BudgetApp expenses={expenses} setExpenses={setExpenses}/>
-      </Container>
+      <Router>
+        <Navbar />
+        <Routes>
+            <Route path="/login" element={<Login />} exact />
+            <Route path="/signup" element={<Signup />} exact />
+            <Route path="/logout" element={<Logout />} exact />
+            <Route path="/dashboard" element={<Dashboard />} exact />
+          {/* <Route path="/" element={<div><BudgetForm expenses={expenses} setExpenses={setExpenses}/><BudgetApp expenses={expenses} setExpenses={setExpenses}/></div>} /> */}
+        </Routes>
+      </Router>
     </div>
   );
 }
